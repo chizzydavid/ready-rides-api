@@ -5,7 +5,8 @@ ENV NODE_ENV=${NODE_ENV}
 
 WORKDIR /usr/src/api
 
-COPY package*.json .
+COPY package.json .
+COPY package-lock.json .
 
 RUN npm i -g @nestjs/cli
 RUN npm i --production=true
