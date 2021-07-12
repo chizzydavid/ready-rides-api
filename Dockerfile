@@ -1,4 +1,4 @@
-FROM node:14 AS production
+FROM node:14-alpine AS production
 
 ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
@@ -11,7 +11,7 @@ COPY package-lock.json .
 RUN npm i -g @nestjs/cli
 RUN npm i --production=true
 
-RUN apt-get -q update && apt-get -qy install netcat
+RUN apk update && apk add netcat-openbsd
 
 COPY . .
 
